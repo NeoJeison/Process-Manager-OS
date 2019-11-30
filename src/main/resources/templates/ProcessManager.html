@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lxmnls:th="https://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+    <title>Procces Manager</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <blockquote class="blockquote text-center">
+  		<h1 class="mb-0">Process Manager</h1>
+  		<footer class="blockquote-footer">Created by Jeison Mejia</footer>
+	</blockquote>
+    <div class='container-fluid'>
+        <table class='table-responsive table text-light'>
+          <thead>
+            <tr class='bg-primary'>
+              <th scope='col' class='text-center'>User</th>
+              <th scope='col' class='text-center'>PID</th>
+              <th scope='col' class='text-center'>CPU</th>
+              <th scope='col' class='text-center'>Memory</th>
+              <th scope='col' class='text-center'>VSZ</th>
+              <th scope='col' class='text-center'>RSS</th>
+              <th scope='col' class='text-center'>TTY</th>
+              <th scope='col' class='text-center'>Stat</th>
+              <th scope='col' class='text-center'>Start</th>
+              <th scope='col' class='text-center'>Time</th>
+              <th scope='col' class='text-center'>Command</th>
+              <th scope='col' class='text-center'>Kill it option</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="process : ${processes}">
+              <td class="text-dark"><span th:text="${process.user}"></span></td>
+              <td class="text-dark"><span th:text="${process.pid}"></span></td>
+              <td class="text-dark"><span th:text="${process.cpu}"></span></td>
+              <td class="text-dark"><span th:text="${process.mem}"></span></td>
+              <td class="text-dark"><span th:text="${process.vsz}"></span></td>
+              <td class="text-dark"><span th:text="${process.rss}"></span></td>
+              <td class="text-dark"><span th:text="${process.tty}"></span></td>
+              <td class="text-dark"><span th:text="${process.stat}"></span></td>
+              <td class="text-dark"><span th:text="${process.start}"></span></td>
+              <td class="text-dark"><span th:text="${process.time}"></span></td>
+              <td class="text-dark"><span th:text="${process.command}"></span></td>
+              <td class="text-dark"><a th:href="@{/kill}+'?pid='+${process.pid}">¡KILL IT!</a></td>
+            </tr>
+            </tbody>
+        </table>
+	</div>
+     	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

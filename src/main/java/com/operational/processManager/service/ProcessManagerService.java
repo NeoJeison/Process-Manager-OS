@@ -65,9 +65,7 @@ public class ProcessManagerService {
 		return allProcesses;
 	}
 	
-	public String killAProcess(String pid) {
-		//Message of how the operation (kill the process) went.
-		String statusMessage = "";
+	public void killAProcess(String pid) {
 		//Gets environment in order to be able to execute commands.
 		Runtime console = Runtime.getRuntime();
 		
@@ -76,14 +74,6 @@ public class ProcessManagerService {
 			Process process = console.exec(KILL_BASE + pid);
 			//Waits for the process to be over.
 			process.waitFor();
-			
-			if(process.exitValue() == 0) {
-				//The process ended normally.
-				statusMessage = "The process was killed successfully";
-			}else {
-				statusMessage = "The program was not able to kill the process";
-			}
-			
 			//Running processes hold resources so now that is done, it's better to destroy it.
 			process.destroy();
 			
@@ -92,7 +82,6 @@ public class ProcessManagerService {
 			e.printStackTrace();
 		}
 		
-		return statusMessage;
 	}
 	
 }

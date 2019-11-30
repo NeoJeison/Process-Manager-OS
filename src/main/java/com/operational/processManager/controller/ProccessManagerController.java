@@ -22,9 +22,8 @@ public class ProccessManagerController {
 	}
 	
 	@RequestMapping("/kill")
-	public String killProcess(Model model, @RequestParam("pid") String pid, RedirectAttributes redAtt) {
-		String statusMessage = processManagerService.killAProcess(pid);
-		redAtt.addFlashAttribute("statusMessage", statusMessage);
+	public String killProcess(Model model, @RequestParam("pid") String pid) {
+		processManagerService.killAProcess(pid);
 		model.addAttribute("processes", processManagerService.getAllProcesses());
 		return "ProcessManager";
 	}
